@@ -10,18 +10,19 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   build: {
-    outDir: "dist", 
+    outDir: "build",
     assetsDir: "assets",
-    sourcemap: true, 
+    sourcemap: true,
   },
-  plugins: [
-    react(),
-    mode === 'development' &&
-    componentTagger(),
-  ].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(
+    Boolean
+  ),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: "build",
   },
 }));
