@@ -233,7 +233,7 @@ const Blog = () => {
 
       <LandingNavbar />
 
-      <div className="container mx-auto px-4 pt-32 pb-16">
+      <div className="container mx-auto px-12  pt-32 pb-16">
         {/* Category filters */}
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((category) => (
