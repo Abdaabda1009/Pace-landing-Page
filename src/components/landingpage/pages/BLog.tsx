@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { X, Tag } from "lucide-react";
-import Head from "next/head";
+
 
 const articles = [
   {
@@ -217,20 +217,6 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-dashboard">
-      <Head>
-        <title>AI Financial Insights | Market Analysis & Trends</title>
-        <meta
-          name="description"
-          content="Expert-curated financial market analysis and investment strategy recommendations"
-        />
-        <meta
-          name="keywords"
-          content={articles
-            .flatMap((article) => article.seoKeywords)
-            .join(", ")}
-        />
-      </Head>
-
       <LandingNavbar />
 
       <div className="container mx-auto px-12  pt-32 pb-16">
