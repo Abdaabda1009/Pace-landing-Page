@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/lib/constants";
+import { APP_NAME } from "@/utils/constants";
 export const Copyright = () => {
   const currentYear = new Date().getFullYear();
   return (

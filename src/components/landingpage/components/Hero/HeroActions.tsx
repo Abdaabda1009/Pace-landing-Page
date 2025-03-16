@@ -1,15 +1,14 @@
-
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import SpotlightCard from "@/components/ui/SpotlightCard";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES } from "@/utils/constants";
 
 export const HeroActions = () => {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
     navigate("SignUp");
-  }
+  };
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">

@@ -12,8 +12,7 @@ interface FooterLinksProps {
 export const FooterLinks = ({ title, links }: FooterLinksProps) => {
   return (
     <div className="mt-4 sm:mt-0">
-      <h4
-        className="text-white font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-6">
+      <h4 className="text-white font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-6">
         {title}
       </h4>
       <ul className="space-y-3 sm:space-y-4">

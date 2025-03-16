@@ -14,7 +14,10 @@ import { Target, TrendingUp, DollarSign, Bell, Shield } from "lucide-react";
 
 // Create a separate FeatureCard component
 const FeatureCard = ({ feature, index }) => (
-  <SpotlightCard key={index} className="relative h-full bg-transparent md:border-blue-600/10">
+  <SpotlightCard
+    key={index}
+    className="relative h-full bg-transparent md:border-blue-600/10"
+  >
     <Card className="border-0 h-full flex flex-col items-center">
       <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full w-full">
         <div className="rounded-full p-3 bg-blue-600/10 flex items-center justify-center mb-4">

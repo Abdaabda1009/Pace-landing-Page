@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES } from "@/utils/constants";
 
 const navLinkStyle = "hover:bg-white/5 transition-colors duration-200";
 
 export const NavLinks = () => {
   const navigate = useNavigate();
-  
+
   const handleNavigation = (action: () => void) => {
     // If we're not on the home page, navigate home first
     if (location.pathname !== ROUTES.HOME) {
@@ -17,28 +17,28 @@ export const NavLinks = () => {
       action();
     }
   };
-  
+
   const scrollToFeatures = () => {
-    const featuresSection = document.querySelector('#features-grid');
+    const featuresSection = document.querySelector("#features-grid");
     if (featuresSection) {
-      featuresSection.scrollIntoView({ behavior: 'smooth' });
+      featuresSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToPricing = () => {
-    const pricingSection = document.querySelector('#pricing-section');
+    const pricingSection = document.querySelector("#pricing-section");
     if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth' });
+      pricingSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToCompany = () => {
-    const companySection = document.querySelector('#company-section');
+    const companySection = document.querySelector("#company-section");
     if (companySection) {
-      companySection.scrollIntoView({ behavior: 'smooth' });
+      companySection.scrollIntoView({ behavior: "smooth" });
     }
   };
-  
+
   return (
     <>
       <Button

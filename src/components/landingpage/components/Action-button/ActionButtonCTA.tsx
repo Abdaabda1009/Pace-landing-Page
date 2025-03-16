@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import { useNavigate } from "react-router-dom";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import { useMediaQuery } from "@/hooks/use-media-query";

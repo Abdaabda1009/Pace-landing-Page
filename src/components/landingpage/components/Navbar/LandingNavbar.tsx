@@ -3,12 +3,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { MobileMenu } from "./MobileMenu";
 import { DesktopMenu } from "./DesktopMenu";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES } from "@/utils/constants";
 
 export const LandingNavbar = () => {
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm border-b border-white/5">

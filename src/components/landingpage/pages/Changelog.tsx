@@ -35,56 +35,77 @@ export const Changelog = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white ">
       <LandingNavbar />
-      <div className="container mx-auto px-12 pt-32 pb-16">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 pt-24 md:pt-32 pb-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-5xl font-bold mb-4">Changelog</h1>
-          <p className="text-lg text-white/60 mb-8">
-            New updates and improvements to PACE innovation.
-          </p>
+          <div className="mb-12 space-y-4 text-center md:text-left">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600/40 to-purple-200 bg-clip-text text-transparent">
+              Changelog
+            </h1>
+            <p className="text-lg text-white/60">
+              Stay updated with the latest improvements to PACE innovation
+            </p>
+          </div>
 
           <form
             onSubmit={handleSubscribe}
-            className="flex gap-2 mb-16 max-w-md"
+            className="flex flex-col md:flex-row gap-4 mb-16 max-w-md mx-auto md:mx-0"
           >
             <Input
               type="email"
               placeholder="you@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/40"
+              className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:ring-2 focus:ring-blue-300"
+              aria-label="Subscribe to updates"
             />
             <Button
               type="submit"
-              className="h-full w-[200px] bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF] hover:bg-clip-text hover:text-transparent transition-colors duration-200"
+              className="w-full md:w-auto px-8 py-4 transition-transform hover:scale-105 hover:bg-blue-200/20 transition-colors duration-200"
             >
-              Subscribe
+              Subscribe for Updates
             </Button>
           </form>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {updates.map((update) => (
-              <article key={update.id} className="relative">
-                <time className="text-sm text-white/60 mb-4 block">
-                  {update.date}
-                </time>
-                <h2 className="text-2xl font-semibold mb-4">{update.title}</h2>
-                <div className="prose prose-invert">
-                  <p className="text-white/80 mb-4">{update.content}</p>
-                  <ul className="space-y-3 text-white/80 list-none">
-                    {update.features.map((feature, index) => (
-                      <li key={index}>• {feature}</li>
-                    ))}
-                  </ul>
+              <article
+                key={update.id}
+                className="relative p-6 rounded-xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all"
+              >
+                <div className="flex flex-col md:flex-row justify-between mb-4">
+                  <time className="text-sm text-blue-300 mb-2 md:mb-0">
+                    {update.date}
+                  </time>
+                  <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
+                    Version Update
+                  </span>
                 </div>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-100">
+                  {update.title}
+                </h2>
+                <p className="text-white/80 mb-6">{update.content}</p>
+                <ul className="space-y-4">
+                  {update.features.map((feature, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start space-x-3 text-white/80 hover:text-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 w-2 h-2 mt-2 bg-blue-400 rounded-full" />
+                      <p className="leading-relaxed">{feature}</p>
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-600/30 blur-3xl" />
+
+      {/* Animated background gradient */}
+      <div className="fixed -bottom-[50%] -left-[25%] w-[150vw] h-[150vh] opacity-15 pointer-events-none">
+        <div className="absolute inset-0 animate-pulse-slow bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/30 via-transparent to-purple-600/30" />
       </div>
     </div>
   );
