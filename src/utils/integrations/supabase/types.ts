@@ -47,6 +47,24 @@ export type Database = {
           is_published?: boolean;
         };
       };
+      formData: {
+        Row: {
+          id: string;
+          name: string;
+          email: string;
+          company?: string | null;
+          reason?: string | null;
+          created_at: boolean;
+        };
+        Insert: {
+          id?: string;
+          name?: string;
+          email?: string;
+          company?: string | null;
+          reason?: string | null;
+          created_at?: boolean;
+        };
+      };
     };
   };
 };

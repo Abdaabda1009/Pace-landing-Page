@@ -10,9 +10,15 @@ import {
   Outlet,
 } from "react-router-dom";
 import { Landing } from "./Landing";
-import  Blog  from "@/components/landingpage/pages/BLog"
+import Blog from "@/components/landingpage/pages/BLog";
 import { Changelog } from "@/components/landingpage/pages/Changelog";
 import SignUp from "./components/landingpage/pages/SignUp";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://qhydmtfzqutlroodbjhr.supabase.co",
+  "<eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoeWRtdGZ6cXV0bHJvb2RiamhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzU4NjAsImV4cCI6MjA1NzcxMTg2MH0.vrWuGzVvkDHhAVogvjMC7ZXKjvtFfCkbrXbg2CVXKaQ>"
+);
 
 const queryClient = new QueryClient();
 
