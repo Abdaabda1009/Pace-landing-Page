@@ -3,27 +3,38 @@ import { ActionButtonHeading } from "./ActionButtonHeading";
 import { ActionButtonDescription } from "./ActionButtonDescription";
 import { ActionButtonCTA } from "./ActionButtonCTA";
 import { ActionButtonImage } from "./ActionButtonImage";
-
+import { useState } from "react";
+  
 export const ActionButtonCard = () => {
+    const [isHovered, setIsHovered] = useState(false);
+
   return (
     <section
       className={cn(
         "relative rounded-xl overflow-hidden",
-        "transition-all duration-300 hover:shadow-xl",
-        "mx-4 sm:mx-6 lg:mx-auto", // Responsive horizontal margins
-        "py-8 md:py-12 lg:py-16 xl:py-20", // Responsive vertical padding
-        "max-w-7xl" // Limit maximum width for ultra-wide screens
+        "transition-all duration-500 ease-in-out",
+        "mx-4 sm:mx-6 lg:mx-auto",
+        "py-10 md:py-14 lg:py-16 xl:py-20",
+        "max-w-7xl",
+        "border border-transparent",
+        isHovered
+          ? "shadow-2xl border-opacity-30 border-blue-400 transform translate-y-1"
+          : "shadow-lg"
       )}
       style={{
         background: `
           linear-gradient(
-            to right,
-            rgba(32, 0, 121, 0),
-            rgba(6, 44, 95, 0.3)
+            135deg,
+            rgba(32, 0, 121, 0.05),
+            rgba(6, 44, 95, 0.35)
           )
         `,
+        backdropFilter: "blur(8px)",
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {" "}
         {/* Responsive container padding */}

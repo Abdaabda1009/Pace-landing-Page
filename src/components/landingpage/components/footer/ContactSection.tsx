@@ -8,7 +8,7 @@ export const ContactSection = () => {
       <ul className="space-y-3 sm:space-y-4">
         <li className="flex items-center gap-2 sm:gap-3 text-dashboard-muted text-sm sm:text-base">
           <Mail className="w-4 sm:w-5 h-4 sm:h-5" />
-          <span>abdallah@openainsights.com</span>
+          <span>Abdaabda1009@paceinv.com</span>
         </li>
         <li className="flex items-center gap-2 sm:gap-3 text-dashboard-muted text-sm sm:text-base">
           <Phone className="w-4 sm:w-5 h-4 sm:h-5" />

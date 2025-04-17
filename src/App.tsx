@@ -14,6 +14,7 @@ import Blog from "@/components/landingpage/pages/BLog";
 import { Changelog } from "@/components/landingpage/pages/Changelog";
 import SignUp from "./components/landingpage/pages/SignUp";
 import { createClient } from "@supabase/supabase-js";
+import PrivacyPolicy from "./components/landingpage/pages/PrivacyPolicy";
 
 const supabase = createClient(
   "https://qhydmtfzqutlroodbjhr.supabase.co",
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="Blog" element={<Blog />} />
           <Route path="Changelog" element={<Changelog />} />
           <Route path="SignUp" element={<SignUp />} />
+          <Route path="PrivacyPolicy" element={<PrivacyPolicy />} />
 
           {/* Catch-all route redirects to Landing */}
           <Route path="*" element={<Navigate to="/" replace />} />

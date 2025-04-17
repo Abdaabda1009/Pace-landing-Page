@@ -11,6 +11,7 @@ export const Footer = () => {
     { to: "/blog", label: "Blog" },
     { to: "/Changelog", label: "Changelog" },
     { to: "/Company", label: "Company" },
+    { to: "/PrivacyPolicy", label: "Privacy Policy " },
   ];
 
   const communityLinks = [

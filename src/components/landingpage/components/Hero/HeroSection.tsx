@@ -73,7 +73,7 @@ const Features = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((current) => (current + 1) % features.length);
-    }, 60000); // 1 minute interval
+    }, 5000); // 1 minute interval
 
     return () => clearInterval(interval);
   }, [features.length]);
@@ -135,13 +135,18 @@ export const HeroSection = () => {
         <HeroActions />
       </div>
       <Features />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4/2 w-[80px] max-w-xs md:max-w-sm h-[120vh] opacity-100 pointer-events-none">
-        <div className="absolute inset-0  bg-gradient-to-b from-blue-400/60 to-blue-800/30 blur-3xl">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[5vh] opacity-100 pointer-events-none animate-splashSpread">
-            <div className="absolute inset-0  bg-gradient-to-b from-blue-400/60" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80px] max-w-xs md:max-w-sm h-[120vh] opacity-100">
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-400/60 to-blue-800/30 blur-3xl">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[5vh] opacity-100 animate-splashSpread">
+              <div className="absolute inset-0  bg-gradient-to-b from-blue-400/60" />
+            </div>
           </div>
         </div>
       </div>
     </main>
   );
 };
+            

@@ -1,91 +1,172 @@
+import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Play } from "lucide-react";
+import { Play, ExternalLink, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const DashboardPic = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  // Card data
+  const cards = [
+    {
+      id: "overview",
+      title: "Subscription Overview",
+      description:
+        "View and manage all your subscriptions in one powerful dashboard",
+      image: "/LandingAssets/Sub-view-1.png",
+      hasVideo: true,
+      color: "from-blue-500/20 to-purple-600/20",
+      borderColor: "border-blue-500/30 group-hover:border-blue-400/50",
+    },
+    {
+      id: "reminders",
+      title: "Smart Reminders",
+      description:
+        "Never miss a payment with intelligent alerts and renewal tracking",
+      image: "/LandingAssets/Reminder-2.png",
+      hasVideo: false,
+      color: "from-purple-500/20 to-blue-600/20",
+      borderColor: "border-blue-600/30 group-hover:border-purple-400/50",
+    },
+  ];
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 w-full">
-      {/* Card 1 - Renewal Reminders */}
-      <Card className="relative w-full md:w-[400px] border-2 border-blue-500/20 overflow-hidden rounded-xl p-3 sm:p-4 bg-gradient-to-r from-[rgba(32,0,121,0)] to-[rgba(6,44,95,0.3)] backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300 group h-full">
-        <div className="h-36 sm:h-48 md:h-60 w-full rounded-xl flex items-center justify-center overflow-hidden">
-          <img
-            className="w-full h-full object-cover border-b border-blue-500/30 group-hover:border-blue-500/50 transition-all"
-            src="\LandingAssets\Reminder-2.png"
-            alt="Renewal reminders interface"
-          />
-        </div>
-        <div className="mt-3 sm:mt-4 space-y-2">
-          <h3 className="text-white font-semibold text-lg sm:text-xl tracking-tight">
-            Renewal Reminders
-          </h3>
-          <p className="text-gray-300/90 text-sm sm:text-base leading-snug">
-            Never miss a renewal with instant alerts and payment reminders
-          </p>
-        </div>
-      </Card>
+    <motion.div
+      className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      {cards.map((card, index) => (
+        <motion.div
+          key={card.id}
+          variants={cardVariants}
+          className={`relative ${
+            index === 0 ? "lg:col-span-1" : "lg:col-span-1"
+          }`}
+          onMouseEnter={() => setHoveredCard(card.id)}
+          onMouseLeave={() => setHoveredCard(null)}
+        >
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl transform -translate-y-1 scale-[0.98] group-hover:scale-[1.01] transition-all duration-500" />
 
-      {/* Card 2 - Subscription Overview */}
-      <Card className="relative w-full md:w-[800px] md:ml-24 border-2 border-blue-500/20 overflow-hidden rounded-xl p-3 sm:p-4 bg-gradient-to-b from-[rgba(32,0,121,0)] to-[rgba(6,44,95,0.3)] backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300 group h-full">
-        <div className="h-36 sm:h-48 md:h-60 w-full rounded-xl flex items-center justify-center overflow-hidden relative">
-          <img
-            className="w-full h-full object-cover border-b border-blue-500/30 group-hover:border-blue-500/50 transition-all"
-            src="\LandingAssets\Sub-view-1.png"
-            alt="Subscription overview dashboard"
-          />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <button className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
-              <Play className="w-8 h-8 text-white stroke-[1.5]" />
-            </button>
-          </div>
-        </div>
-        <div className="mt-3 sm:mt-4 space-y-2">
-          <h3 className="text-white font-semibold text-lg sm:text-xl tracking-tight">
-            Subscription Overview
-          </h3>
-          <p className="text-gray-300/90 text-sm sm:text-base leading-snug">
-            View all your active subscriptions in one convenient dashboard
-          </p>
-        </div>
-      </Card>
+          <Card
+            className={`relative w-full overflow-hidden rounded-xl bg-gradient-to-r ${card.color} backdrop-blur-sm border-2 border-blue-500/20 hover:border-blue-400/40 group transition-all duration-500 h-full transform hover:scale-[1.01] hover:shadow-xl hover:shadow-blue-900/10`}
+          >
+            {/* Badge in corner */}
+            <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-black/30 backdrop-blur-sm rounded-full border border-white/10 text-xs font-medium text-blue-200">
+              Featured
+            </div>
 
-      {/* Card 3 - Plan Management */}
-      <Card className="relative w-full md:w-[800px] border-2 border-blue-500/20 overflow-hidden rounded-xl p-3 sm:p-4 bg-gradient-to-b from-[rgba(32,0,121,0)] to-[rgba(6,44,95,0.3)] backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300 group h-full">
-        <div className="h-36 sm:h-48 md:h-60 w-full rounded-xl flex items-center justify-center overflow-hidden">
-          <img
-            className="w-full h-full object-cover border-b border-blue-500/30 group-hover:border-blue-500/50 transition-all"
-            src="\LandingAssets\Mang-2.png"
-            alt="Plan management interface"
-          />
-        </div>
-        <div className="mt-3 sm:mt-4 space-y-2">
-          <h3 className="text-white font-semibold text-lg sm:text-xl tracking-tight">
-            Plan Management
-          </h3>
-          <p className="text-gray-300/90 text-sm sm:text-base leading-snug">
-            Easily manage your subscription plans, update details, and schedule
-            renewals
-          </p>
-        </div>
-      </Card>
+            {/* Image container */}
+            <div className="relative h-52 sm:h-64 lg:h-72 w-full overflow-hidden rounded-t-lg">
+              {/* Glowing overlay effect */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-t ${
+                  card.hasVideo
+                    ? "from-black/80 via-transparent to-transparent"
+                    : "from-black/60 via-transparent to-transparent"
+                } opacity-70`}
+              />
 
-      {/* Card 4 - Billing History */}
-      <Card className="relative w-full md:w-[400px] md:ml-[500px] border-2 border-blue-500/20 overflow-hidden rounded-xl p-3 sm:p-4 bg-gradient-to-r from-[rgba(32,0,121,0)] to-[rgba(6,44,95,0.3)] backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300 group h-full">
-        <div className="h-36 sm:h-48 md:h-60 w-full rounded-xl flex items-center justify-center overflow-hidden">
-          <img
-            className="w-full h-full object-cover border-b border-blue-500/30 group-hover:border-blue-500/50 transition-all"
-            src="\LandingAssets\bliling-4.png"
-            alt="Billing history dashboard"
-          />
-        </div>
-        <div className="mt-3 sm:mt-4 space-y-2">
-          <h3 className="text-white font-semibold text-lg sm:text-xl tracking-tight">
-            Billing History
-          </h3>
-          <p className="text-gray-300/90 text-sm sm:text-base leading-snug">
-            Review past billing statements and track recurring payments
-            effortlessly
-          </p>
-        </div>
-      </Card>
-    </div>
+              {/* Image */}
+              <motion.img
+                className={`w-full h-full object-fit transition-transform duration-[3s] group-hover:scale-110 ${card.borderColor}`}
+                src={card.image}
+                alt={card.title}
+                initial={{ scale: 1 }}
+                animate={{
+                  scale: hoveredCard === card.id ? 1.05 : 1,
+                }}
+                transition={{
+                  duration: 8,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+
+              {/* Video play button */}
+              {card.hasVideo && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.button
+                    className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Play className="w-8 h-8 text-white stroke-[1.5]" />
+                  </motion.button>
+                </div>
+              )}
+            </div>
+
+            {/* Content section */}
+            <div className="p-5 space-y-3">
+              <div className="flex justify-between items-start">
+                <h3 className="text-white font-semibold text-xl tracking-tight">
+                  {card.title}
+                </h3>
+
+                <motion.div
+                  className="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    opacity: [1, 0.8, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                >
+                  New
+                </motion.div>
+              </div>
+
+              <p className="text-gray-300/90 text-sm leading-relaxed">
+                {card.description}
+              </p>
+
+              {/* Interactive footer */}
+              <div className="pt-3 flex justify-between items-center">
+                <motion.button
+                  className="flex items-center text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors"
+                  whileHover={{ x: 3 }}
+                >
+                  Learn more <ChevronRight className="ml-1 w-4 h-4" />
+                </motion.button>
+
+                <motion.button
+                  className="p-2 rounded-full bg-blue-900/40 border border-blue-700/30 text-blue-300 hover:bg-blue-800/50 hover:border-blue-600/40 transition-all"
+                  whileHover={{ rotate: 15, scale: 1.1 }}
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </motion.button>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      ))}
+    </motion.div>
   );
 };

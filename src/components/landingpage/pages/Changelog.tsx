@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Footer } from "../components/footer/Footer";
 
 const updates = [
   {
@@ -107,6 +108,7 @@ export const Changelog = () => {
       <div className="fixed -bottom-[50%] -left-[25%] w-[150vw] h-[150vh] opacity-15 pointer-events-none">
         <div className="absolute inset-0 animate-pulse-slow bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/30 via-transparent to-purple-600/30" />
       </div>
+      <Footer/>
     </div>
   );
 };
