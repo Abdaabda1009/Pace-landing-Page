@@ -15,10 +15,11 @@ import { Changelog } from "@/components/landingpage/pages/Changelog";
 import SignUp from "./components/landingpage/pages/SignUp";
 import { createClient } from "@supabase/supabase-js";
 import PrivacyPolicy from "./components/landingpage/pages/PrivacyPolicy";
+import Company from "./components/landingpage/pages/Company";
 
 const supabase = createClient(
   "https://qhydmtfzqutlroodbjhr.supabase.co",
-  "<eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoeWRtdGZ6cXV0bHJvb2RiamhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzU4NjAsImV4cCI6MjA1NzcxMTg2MH0.vrWuGzVvkDHhAVogvjMC7ZXKjvtFfCkbrXbg2CVXKaQ>"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoeWRtdGZ6cXV0bHJvb2RiamhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzU4NjAsImV4cCI6MjA1NzcxMTg2MH0.vrWuGzVvkDHhAVogvjMC7ZXKjvtFfCkbrXbg2CVXKaQ"
 );
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="Changelog" element={<Changelog />} />
           <Route path="SignUp" element={<SignUp />} />
           <Route path="PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="Company" element={<Company />} />
 
           {/* Catch-all route redirects to Landing */}
           <Route path="*" element={<Navigate to="/" replace />} />

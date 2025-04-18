@@ -32,12 +32,9 @@ export const NavLinks = () => {
     }
   };
 
-  const scrollToCompany = () => {
-    const companySection = document.querySelector("#company-section");
-    if (companySection) {
-      companySection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const HandleNavigation = () => { 
+    navigate("/Company")
+  }
 
   return (
     <>
@@ -60,7 +57,7 @@ export const NavLinks = () => {
       <Button
         variant="ghost"
         className={`text-white w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal hover:bg-blue-200/20`}
-        onClick={() => handleNavigation(scrollToCompany)}
+        onClick={HandleNavigation}
       >
         Company
       </Button>

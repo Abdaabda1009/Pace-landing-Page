@@ -11,6 +11,7 @@ import {
 import { DashboardPic } from "./DashboardPic";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/utils/utils";
+import { useNavigate } from "react-router-dom";
 
 
 // Feature card component for the benefits section
@@ -67,6 +68,15 @@ const AnimatedCounter = ({ value, label, prefix = "", suffix = "" }) => {
 };
 
 export const AboutSection = () => {
+
+  // Navigation Implementaion 
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate("/Signup")
+  }
+
+
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -222,6 +232,7 @@ export const AboutSection = () => {
               <Button
                 className="group h-12 px-8 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 border-0 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-blue-600/20 hover:shadow-blue-500/30 hover:scale-[1.02]"
                 aria-label="Get started with our platform"
+                onClick={handleNavigation}
               >
                 <span className="flex items-center gap-2">
                   Get Started
