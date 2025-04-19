@@ -4,13 +4,14 @@ import { Footer } from "../components/footer/Footer";
 import { motion } from "framer-motion";
 import { ChartColumn, ChartSpline, PiggyBank } from "lucide-react";
 import { supabase } from "@/lib/client"; // Import supabase client from your lib
+import axios from "axios";
 
 const Company = () => {
   const [showNotifyPopover, setShowNotifyPopover] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -31,13 +32,13 @@ const Company = () => {
     },
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      // Check for existing email first - following the pattern from SignUp.tsx
+      // Check for existing email first
       const { data: existing, error: lookupError } = await supabase
         .from("NewsLetterSubscription")
         .select("email")
@@ -54,7 +55,7 @@ const Company = () => {
       }
 
       // Insert the new signup record
-      const { data, error: insertError } = await supabase
+      const { error: insertError } = await supabase
         .from("NewsLetterSubscription")
         .insert([
           {
@@ -62,12 +63,18 @@ const Company = () => {
             created_at: new Date().toISOString(),
             source: "company_page", // Track where this signup came from
           },
-        ])
-        .select();
+        ]);
 
       if (insertError) {
         console.error("Insert error:", insertError);
         throw new Error(insertError.message);
+      }
+
+      // Send welcome email using the server endpoint
+      const response = await axios.post("/api/send-email", { email });
+
+      if (!response.data.success) {
+        throw new Error("Failed to send welcome email");
       }
 
       // Success - show confirmation
@@ -80,11 +87,9 @@ const Company = () => {
         setShowNotifyPopover(false);
       }, 3000);
     } catch (err) {
-      console.error("Error saving email:", err);
+      console.error("Error:", err);
       setError(
-        err instanceof Error
-          ? err.message
-          : "Failed to save your email. Please try again."
+        err instanceof Error ? err.message : "An unexpected error occurred"
       );
     } finally {
       setIsLoading(false);
