@@ -168,7 +168,7 @@ const Company = () => {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-accent/30 rounded-xl blur-lg"></div>
                   <img
-                    src="public/assets/logoicon.png"
+                    src="/assets/logoicon.png"
                     alt="Pace financial apps on multiple devices"
                     className="relative w-full max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl rounded-lg shadow-xl z-10"
                   />
